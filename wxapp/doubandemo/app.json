@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#404040",
+    "navigationBarTitleText": "测试dome",
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh": false
+  }
+}

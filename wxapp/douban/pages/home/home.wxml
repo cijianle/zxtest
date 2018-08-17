@@ -1,0 +1,19 @@
+<!--pages/home/home.wxml-->
+<view class="header">
+  <view class="nav" >
+    <view class="nav-wrapper">
+    <block wx:for="{{tabs.list}}">
+      <view dataid="{{item.type}}" bindtap="changeTab">{{item.text }}</view>
+      
+    </block>
+    </view>
+  </view>
+</view>
+
+<view class="list basestyle">
+  <block wx:for="{{movies.subjects}}">
+    <view class="item">
+      {{item.id}}   <image class="background" mode="aspectFill" src="{{item.images.large}}"></image>  {{item.title}}
+    </view>
+  </block>
+</view>  

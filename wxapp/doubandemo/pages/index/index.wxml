@@ -1,0 +1,124 @@
+<!--pages/index/index.wxml-->
+<text>pages/index/index.wxml</text>
+
+<view>
+name:{{query.name}}
+time:{{query.time}}
+<navigator url='../index/index?name=testwxapp&time=180710'>跳转</navigator>
+<navigator url='../index/index?name=redirect&time=180710' redirect>重定向</navigator>
+<navigator url='../index/index?name=testwxappredirect&time=180710' redirect>刷新</navigator>
+</view>
+
+<button>默认按钮</button>
+<button size='mini'>size:mini</button>
+
+
+<form bindsubmit='formsubmit' bindreset='formreset'>
+<textarea bindblur='textareaGetValue' placeholder='说明文字' />
+
+<view><input placeholder='默认样式，自动聚焦' auto-focus /></view>
+<input placeholder='内容中123会被替换为0' bindinput='inputChangeValue1' type='number' maxlength='20' />
+<input placeholder='输入3个以上字符会收起键盘' bindinput='inputChangeValue2' type='number' maxlength='20' />
+
+
+<picker value='{{pickerSelectDate}}' mode="date" start='{{pickerStartDate}}' end="{{pickerEndDate}}" bindchange="pickerDateChange">
+  <view>
+    当前选中：{{pickerSelectDate}}
+  </view>
+
+</picker>
+
+<picker value='{{pickerSelectTime}}' mode="time" start='{{pickerStartTime}}' end="{{pickerEndTime}}" bindchange="pickerTimeChange">
+  <view>
+    当前选中：{{pickerSelectTime}}
+  </view>
+
+</picker>
+
+
+<picker value='{{pickerSelectedIndex}}' range='{{pickerList}}' bindchange="pickerChange">
+  <view>
+    当前选中：{{pickerList[pickerSelectedIndex]}}
+  </view>
+
+</picker>
+
+
+<view>
+  <icon type='info' size='{{icon.size}}' style='opacity:{{icon.opacity/10}};'></icon>
+</view>
+<view>
+  <label>调整图标大小：
+    <slider show-value max='100' min='10' step='5' value='{{icon.size}}' bindchange='iconChangeSize'></slider>
+  </label>
+</view>
+<view>
+  <label>调整透明度：
+    <slider show-value max='10' min='0' step='1' value='{{icon.opacity}}' bindchange='iconChangeOpacity'></slider>
+  </label>
+</view>
+
+
+
+<view wx:for="{{switchList}}">
+  <switch id="{{item.name}}" checked='{{item.checked}}' bindchange="{{item.changeEventName}}" type="{{item.type}}"></switch>
+</view>
+
+
+
+<checkbox-group bindchange="checkboxChange">
+  <view wx:for="{{checkboxs}}">
+    <checkbox value='{{item.value}}' checked='{{item.checked}}' disabled='{{item.display}}'>{{item.name}}</checkbox>
+  </view>
+</checkbox-group>
+
+<radio-group bindchange="radioChangeChoosed">
+  <view wx:for="{{radios}}">
+    <radio checked='{{item.checked}}' value='{{item.value}}'>{{item.text}}</radio>
+  </view>
+</radio-group>
+
+<view>
+  <button type='primary' form-type='submit'>提交</button>
+  <button form-type='reset'>重置</button>
+</view>
+
+</form>
+
+<progress percent='20'>1</progress>
+<progress percent='30' show-info='true'></progress>
+<progress percent='40' stroke-width='40'></progress>
+<progress percent='50' color='#CD5555'></progress>
+<progress percent='60' active></progress>
+
+
+
+<text style='height:300rpx;width:120%'>{{textContent}}</text>
+<icon type="success" size='50'></icon>
+
+
+
+<view wx:if="{{false}}">i am true</view>
+<view wx:else>i am false</view>
+
+<block wx:if="">1</block>
+<block wx:elif="">2</block>
+<block wx:else>3</block>
+
+<template name="showcolor">
+<view wx:for="{{mycolor}}" wx:for-index="myindex" wx:for-item="item">
+{{myindex}} - {{item}}
+</view>
+</template>
+
+<template is="showcolor" data="{{mycolor:color}}"></template>
+
+<scroll-view style='border:solid 1px;height:800rpx;' upper-threshold="0" lower-threshold="100" scroll-top="{{scrollTop}}" scroll-into-view="{{scrollToView}}" scroll-y="true" bindscroll="scroll" bindscrolltolower="scrollToLower" bindscrolltoupper="scrollToUpper">
+<view id="item-1" style="height:300rpx;width:120%">1</view>
+<view id="item-2" style="height:300rpx;width:120%">2</view>
+<view id="item-3" style="height:300rpx;width:120%">3</view>
+<view id="item-4" style="height:300rpx;width:120%">4</view>
+<view id="item-5" style="height:300rpx;width:120%">5</view>
+<view id="item-6" style="height:300rpx;width:120%">6</view>
+</scroll-view>
+<view><button bindtap="scrollToTop">点击到顶部</button></view>
